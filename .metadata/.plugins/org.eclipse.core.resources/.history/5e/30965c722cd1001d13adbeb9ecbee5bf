@@ -1,0 +1,19 @@
+package com.jh.board.service;
+
+import org.springframework.stereotype.Service;
+
+import com.jh.board.dto.ResponseDto;
+import com.jh.board.dto.SignUpDto;
+
+@Service
+public class AuthService {
+	
+	public ResponseDto<?> signUp(SignUpDto dto){
+		String userPassword = dto.getUserPassword();
+		String userPasswordCheck = dto.getUserPasswordCheck();
+		
+		if(!userPassword.equals(userPasswordCheck)) {
+			return ResponseDto.setFailed("Password does not matched!");
+		}
+	}
+}

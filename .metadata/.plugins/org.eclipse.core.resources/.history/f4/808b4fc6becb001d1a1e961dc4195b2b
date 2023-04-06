@@ -1,0 +1,9 @@
+package com.jh.board.entity;
+
+public class LikyEntity {
+	    private int boardnumber;
+	    private String useremail;
+	    private String likeuserprofile;
+	    private String likeusernickname;
+
+}

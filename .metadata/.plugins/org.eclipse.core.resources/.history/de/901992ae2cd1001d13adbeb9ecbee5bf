@@ -1,0 +1,27 @@
+package com.jh.board.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.jh.board.dto.ResponseDto;
+import com.jh.board.dto.SignUpDto;
+import com.jh.board.entity.UserEntity;
+import com.jh.board.repository.UserRepository;
+
+@Service
+public class AuthService {
+	
+	@Autowired UserRepository userRepository;
+	
+	public ResponseDto<?> signUp(SignUpDto dto){
+		String userPassword = dto.getUserPassword();
+		String userPasswordCheck = dto.getUserPasswordCheck();
+		
+		if(!userPassword.equals(userPasswordCheck)) {
+			return ResponseDto.setFailed("Password does not matched!");
+		}
+		UserEntity userEntity = new UserEntity(dto);
+		
+		userRepository.save(userEntity);
+	}
+}

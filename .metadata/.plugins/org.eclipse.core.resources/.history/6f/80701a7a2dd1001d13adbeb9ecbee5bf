@@ -1,0 +1,44 @@
+package com.jh.board.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.jh.board.dto.ResponseDto;
+import com.jh.board.dto.SignUpDto;
+import com.jh.board.entity.UserEntity;
+import com.jh.board.repository.UserRepository;
+
+@Service
+public class AuthService {
+	
+	@Autowired UserRepository userRepository;
+	
+	public ResponseDto<?> signUp(SignUpDto dto){
+		String userEmail = dto.getUserEmail();
+		String userPassword = dto.getUserPassword();
+		String userPasswordCheck = dto.getUserPasswordCheck();
+		
+		try {
+			if (userRepository.existsById(userEmail)) {
+				return ResponseDto.setFailed("Existed Email");
+				}
+			
+		} catch (Exception e) {
+				return ResponseDto.setFailed("Data base Error");
+			}
+		
+		
+		if(!userPassword.equals(userPasswordCheck)) {
+			return ResponseDto.setFailed("Password does not matched!");
+		}
+		UserEntity userEntity = new UserEntity(dto);
+		
+		try {
+			userRepository.save(userEntity);
+		} catch (Exception e) {
+			return ResponseDto.setFailed("Data Base Error");
+			}
+		
+		return ResponseDto.setSuccess("Sign Up Success!", null);
+	}
+}
