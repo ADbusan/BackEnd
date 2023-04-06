@@ -1,5 +1,0 @@
-package com.jh.board.repository;
-
-public interface BoardRepository {
-
-}

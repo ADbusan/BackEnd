@@ -1,0 +1,17 @@
+package com.jh.board.security;
+
+import java.time.Instant;
+import java.time.temporal.ChronoUnit;
+import java.util.Date;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public class TokenProvider {
+	private static final String SECURITY_KEY = "jwtseckey!@";
+	
+	public String create (String userEmail) {
+		Date exprTime = Date.from(Instant.now().plus(1, ChronoUnit.HOURS));
+	}
+
+}

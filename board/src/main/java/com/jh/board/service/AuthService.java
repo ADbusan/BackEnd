@@ -9,11 +9,13 @@ import com.jh.board.dto.SignInResponseDto;
 import com.jh.board.dto.SignUpDto;
 import com.jh.board.entity.UserEntity;
 import com.jh.board.repository.UserRepository;
+import com.jh.board.security.TokenProvider;
 
 @Service
 public class AuthService {
 	
 	@Autowired UserRepository userRepository;
+	@Autowired TokenProvider tokenProvider;
 	
 	public ResponseDto<?> signUp(SignUpDto dto){
 		
@@ -61,7 +63,7 @@ public class AuthService {
 		
 		userEntity.setUserPassword("");
 		
-		String token = "";
+		String token = tokenProvider.create(userEmail);
 		int exprTime = 3600000;
 		SignInResponseDto signInResponseDto = new SignInResponseDto(token, exprTime, userEntity);
 		return ResponseDto.setSuccess("Sign In Success", signInResponseDto);
