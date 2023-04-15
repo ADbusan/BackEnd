@@ -41,8 +41,11 @@
     <fullyQualifiedTypeName name="java.time.temporal.ChronoUnit"/>
     <fullyQualifiedTypeName name="io.jsonwebtoken.Jwts"/>
     <fullyQualifiedTypeName name="io.jsonwebtoken.SignatureAlgorithm"/>
-    <fullyQualifiedTypeName name="java.lang.String"/>
     <fullyQualifiedTypeName name="io.jsonwebtoken.Claims"/>
+    <fullyQualifiedTypeName name="org.springframework.stereotype.Component"/>
     <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
+    <fullyQualifiedTypeName name="javax.servlet.http.HttpServletRequest"/>
+    <fullyQualifiedTypeName name="org.springframework.util.StringUtils"/>
+    <fullyQualifiedTypeName name="java.lang.String"/>
     <fullyQualifiedTypeName name="com.jh.board.security.TokenProvider"/>
 </qualifiedTypeNameHistroy>
